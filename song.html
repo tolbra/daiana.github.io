@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Page</title>
+</head>
+<body>
+    <h2>Now Playing</h2>
+    <audio id="song" src="eyedress.mp3" preload="auto"></audio>
+    <button id="playButton" style="display: none;">Play</button>
+
+    <script>
+        window.onload = function() {
+            const song = document.getElementById('song');
+            const playButton = document.getElementById('playButton');
+
+            song.play().catch(error => {
+                console.log('Autoplay failed, showing play button');
+                playButton.style.display = 'block';
+                playButton.addEventListener('click', function() {
+                    song.play();
+                    playButton.style.display = 'none';
+                });
+            });
+        };
+    </script>
+</body>
+</html>
